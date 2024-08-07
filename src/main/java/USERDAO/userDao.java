@@ -101,7 +101,7 @@ public class userDao {
         return result;
     }
     //select User by id
-    public static User getUserbyid() {
+    public static User getUserbyid(int id) {
         Connection con = getConnection();
         User us = null;
         try {
@@ -111,11 +111,11 @@ public class userDao {
             ps.setString(1, String.valueOf(User.getId()));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                User Us = new User();
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String email = rs.getString("email");
-                String country = rs.getString("country");
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));  // Here is where setName() is called
+                user.setEmail(rs.getString("email"));
+                user.setCountry(rs.getString("country"));
                 //User us=new User(name,email,country);
             }
         } catch (Exception e) {

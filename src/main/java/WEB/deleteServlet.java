@@ -22,8 +22,8 @@ public class deleteServlet extends HttpServlet {
         int status=ed.deleteUser(empId);
 
         if (status>0) {
-            out.println("<h2 style='color:green;'>Deleted Successfully!</h2>");
-            out.print("<a href='viewServlet'>back</a>");
+//            out.println("<h2 style='color:green;'>Deleted Successfully!</h2>");
+//            out.print("<a href='viewServlet'>back</a>");
 
         } else {
             out.println("<h2 style='color:red;'>Deletion Failed!</h2>");

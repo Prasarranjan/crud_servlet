@@ -17,8 +17,13 @@ public class updateServlet extends HttpServlet {
 
         int id = Integer.parseInt(req.getParameter("id"));
         PrintWriter out = resp.getWriter();
-        User u=new User();
-        userDao.getUserbyid();
+        User u= new User();
+//        String name =req.getParameter("name");
+//        String email=req.getParameter("email");
+//        String country=req.getParameter("country");
+//        u.setName(name);
+//        u.setEmail(email);
+//        u.setCountry(country);
         out.println("<html>");
         out.println("<head><title>Update User</title>");
         out.println("<style>");
@@ -30,7 +35,6 @@ public class updateServlet extends HttpServlet {
         out.println("input[type='submit'] { background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }");
         out.println("input[type='submit']:hover { background-color: #45a049; }");
         out.println("</style>");
-
         out.println("</head>");
         out.println("<body>");
         out.println("<h2>Update User Details</h2>");
@@ -41,7 +45,6 @@ public class updateServlet extends HttpServlet {
         out.println("<tr><td>Email:</td><td><input type='email' name='email' value='" + u.getEmail() + "'/></td></tr>");
         out.println("<tr><td>Country:</td><td><input type='text' name='country' value='" + u.getCountry() + "'/></td></tr>");
         out.println("<tr><td colspan='2' style='text-align: center;'><input type='submit' value='Update'/></td></tr>");
-
         out.println("</table>");
         out.println("</form>");
         out.println("</body>");

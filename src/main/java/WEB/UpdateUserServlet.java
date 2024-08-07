@@ -33,7 +33,7 @@ public class UpdateUserServlet extends HttpServlet {
        obj.setId(id);
        int result= userDao.updateUser(obj);
        PrintWriter out = resp.getWriter();
-       if(result>0){
+       if(result!=0){
            out.println("<h2 style='color:green;'>Updated Successfully!</h2>");
            out.print("<a href='viewServlet'>back</a>");
        }
