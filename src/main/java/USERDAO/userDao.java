@@ -9,6 +9,7 @@ import java.util.List;
 
 import MODEL.User;
 
+
 public class userDao {
     public static Connection getConnection() {
 
@@ -101,17 +102,17 @@ public class userDao {
         return result;
     }
     //select User by id
-    public static User getUserbyid(int id) {
+    public  User getUserbyid(int id) {
+        User user = new User();
+
         Connection con = getConnection();
-        User us = null;
         try {
-            String selectUserbyID="select * from details where id=?";
+            String selectUserbyID="select id,name,email,country from details where id=?";
             PreparedStatement ps = con.prepareStatement(selectUserbyID);
-            User User = new User();
-            ps.setString(1, String.valueOf(User.getId()));
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                User user = new User();
+
                 user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));  // Here is where setName() is called
                 user.setEmail(rs.getString("email"));
@@ -121,6 +122,6 @@ public class userDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return us;
+        return user;
     }
 }

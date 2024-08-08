@@ -17,7 +17,9 @@ public class updateServlet extends HttpServlet {
 
         int id = Integer.parseInt(req.getParameter("id"));
         PrintWriter out = resp.getWriter();
-        User u= new User();
+        userDao ud = new userDao();
+        User op=ud.getUserbyid(id);
+
 //        String name =req.getParameter("name");
 //        String email=req.getParameter("email");
 //        String country=req.getParameter("country");
@@ -41,9 +43,9 @@ public class updateServlet extends HttpServlet {
         out.println("<form action='UserServlet' method='post'>");
         out.println("<input type='hidden' name='id' value='" + id + "'/>");
         out.println("<table>");
-        out.println("<tr><td>Name:</td><td><input type='text' name='name' value='" + u.getName() + "'/></td></tr>");
-        out.println("<tr><td>Email:</td><td><input type='email' name='email' value='" + u.getEmail() + "'/></td></tr>");
-        out.println("<tr><td>Country:</td><td><input type='text' name='country' value='" + u.getCountry() + "'/></td></tr>");
+        out.println("<tr><td>Name:</td><td><input type='text' name='name' value='" + op.getName() + "'/></td></tr>");
+        out.println("<tr><td>Email:</td><td><input type='email' name='email' value='" + op.getEmail() + "'/></td></tr>");
+        out.println("<tr><td>Country:</td><td><input type='text' name='country' value='" + op.getCountry() + "'/></td></tr>");
         out.println("<tr><td colspan='2' style='text-align: center;'><input type='submit' value='Update'/></td></tr>");
         out.println("</table>");
         out.println("</form>");
