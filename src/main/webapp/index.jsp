@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,16 +44,33 @@
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
+            margin-bottom: 10px; /* Add margin to separate the buttons */
         }
         input[type="submit"]:hover {
             background-color: #218838;
+        }
+
+        /* Styling for the 'view' link */
+        .btn {
+            display: inline-block;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
 <div class="container">
     <h2>Insert New User</h2>
-    <form action="webServlet" >
+    <form action="webServlet">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
 
@@ -65,8 +81,8 @@
         <input type="text" id="country" name="country" required>
 
         <input type="submit" value="Insert">
-        <a href="viewServlet" class="btn">view</a>
 
+        <a href="viewServlet" class="btn">View Entries</a>
     </form>
 </div>
 </body>

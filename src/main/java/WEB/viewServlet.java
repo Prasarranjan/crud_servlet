@@ -13,16 +13,17 @@ import java.io.PrintWriter;
 import java.util.List;
 import USERDAO.*;
 @WebServlet("/viewServlet")
+
 public class viewServlet extends HttpServlet {
- private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        PrintWriter out=resp.getWriter();
+        PrintWriter out = resp.getWriter();
 
-        userDao ed=new userDao();
-        List<User> listEmp=ed.selectUser();
+        userDao ed = new userDao();
+        List<User> listEmp = ed.selectUser();
 
         out.print("<style>");
         out.print("table { width: 100%; border-collapse: collapse; margin: 20px 0; font-family: Arial, sans-serif; }");
@@ -32,6 +33,22 @@ public class viewServlet extends HttpServlet {
         out.print("tr:hover { background-color: #ddd; }");
         out.print("a { text-decoration: none; color: #4CAF50; }");
         out.print("a:hover { color: #45a049; }");
+
+        // CSS for the 'back' link styled as a button
+        out.print(".btn-back {");
+        out.print("display: inline-block;");
+        out.print("margin-top: 20px;");
+        out.print("padding: 10px 15px;");
+        out.print("background-color: #007bff;");
+        out.print("color: white;");
+        out.print("text-decoration: none;");
+        out.print("border-radius: 5px;");
+        out.print("text-align: center;");
+        out.print("}");
+        out.print(".btn-back:hover {");
+        out.print("background-color: #0056b3;");
+        out.print("}");
+
         out.print("</style>");
 
         out.print("<table>");
@@ -44,7 +61,7 @@ public class viewServlet extends HttpServlet {
         out.print("<th>DELETE</th>");
         out.print("</tr>");
 
-        for(User e : listEmp) {
+        for (User e : listEmp) {
             out.print("<tr>");
             out.print("<td>" + e.getId() + "</td>");
             out.print("<td>" + e.getName() + "</td>");
@@ -57,11 +74,8 @@ public class viewServlet extends HttpServlet {
 
         out.print("</table>");
 
-        out.print("<a href='index.jsp'>back</a>");
+        out.print("<a href='index.jsp' class='btn-back'>Back</a>");
 
         out.print("</table>");
     }
-
-
-
 }
